@@ -1,5 +1,5 @@
 async function search(prompt) {
-    let results = document.getElementById("results");
+    const results = document.getElementById("results");
     results.innerHTML = "";
     console.log("Querying API...")
     const response = await fetch("/api/search", {
@@ -7,7 +7,9 @@ async function search(prompt) {
         headers: {'Content-Type': 'text/plain'},
         body: prompt,
     });
-    for ([path, rank] of await response.json()){
+     const json= await response.json()
+     results.innerHTML = "";
+     for ([path, rank] of json){
         let item = document.createElement("span");
         item.appendChild(document.createTextNode(path));
         item.appendChild(document.createElement("br"));
@@ -16,9 +18,9 @@ async function search(prompt) {
 }
 
 let query = document.getElementById("query");
-query.addEventListener("keypress", function(event) {
-    if (event.key === "Enter") {
-        event.preventDefault();
-        search(query.value);
+let currentSearch = Promise.resolve();
+query.addEventListener("keypress", (event) => {
+    if (event.key == "Enter") {
+        currentSearch.then(()=>search(query.value));
     }
 });
