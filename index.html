@@ -1,4 +1,4 @@
-<html>
+<!-- <html>
   <head>
     <title>Google</title>
   </head>
@@ -8,4 +8,69 @@
     <div id="results"></div>
   </body>
   <script src="index.js"></script>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Google</title>
+    <style>
+      body {
+        background-color: white;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        margin-top: 15%;
+      }
+
+      h1 {
+        font-size: 32px;
+        margin-bottom: 20px;
+        color: #202124;
+      }
+
+      #query {
+        width: 400px;
+        padding: 8px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+      }
+
+      .buttons {
+        margin-top: 10px;
+      }
+
+      .buttons input {
+        padding: 6px 12px;
+        font-size: 14px;
+        margin: 4px;
+        cursor: pointer;
+      }
+
+      #results {
+        margin-top: 20px;
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" alt="Google" />
+      <form onsubmit="return false;">
+        <input type="text" id="query" placeholder="Search Google" />
+        <div class="buttons">
+          <input type="submit" value="Google Search" onclick="search()" />
+          <input type="submit" value="I'm Feeling Lucky" onclick="lucky()" />
+        </div>
+      </form>
+      <div id="results"></div>
+    </div>
+
+    <script src="index.js"></script>
+  </body>
 </html>
